@@ -1,0 +1,8 @@
+JS is a single threaded language - it can do one thing at a time, it can execute one piece of code at a time
+
+what event loop does it - it pushes the function from task queue to stack, seeing if the stack is empty, and then the stack executes the function
+event loop has to wait until the stack is clear before it can push the callback on to the stack from the task queue
+
+the V8 chrome engine have all these things - task queue, stack(function execution), console, heap (memory allocation) and Web APIs - which contains all the other apis like DOM, ajax, setTimeOut etc/.
+
+when people say don't block the event loop. it means the constant rendering part is being rendering via the task queue(callback queue), and when you add sluggish code - image processing and animations - then get into the stack and for that time the event loop is blocked, preventing smooth rendering - browser can't do what it needs to do, create a nice fluid UI - so be careful about how you queue up the code
