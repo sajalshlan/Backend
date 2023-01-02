@@ -6,3 +6,30 @@ event loop has to wait until the stack is clear before it can push the callback 
 the V8 chrome engine have all these things - task queue, stack(function execution), console, heap (memory allocation) and Web APIs - which contains all the other apis like DOM, ajax, setTimeOut etc/.
 
 when people say don't block the event loop. it means the constant rendering part is being rendering via the task queue(callback queue), and when you add sluggish code - image processing and animations - then get into the stack and for that time the event loop is blocked, preventing smooth rendering - browser can't do what it needs to do, create a nice fluid UI - so be careful about how you queue up the code
+
+
+
+NODE
+
+it was impossible to write any program that was not a website using a JavaScript. Node brought JS out of the browser-land - allowing it to accomplish what other server-side languages
+So basically node allows you to run JS on a machine or a server without having to go thru web browser.
+
+To facilitate this, Node has some added functionality that is not found in browser-based JavaScript, such as the ability to read and write local files, create http connections and listen to network requests.
+
+Back to the definition from Node’s website: Node is an asynchronous event driven JavaScript runtime.
+
+
+
+WEB SERVER
+Must read - [https://developer.mozilla.org/en-US/docs/Learn/Server-side/First_steps/Client-Server_overview]
+
+
+
+STATIC SITE
+A static site is one that returns the same hard coded content from the server whenever a particular resource is requested. So for example if you have a page about a product at /static/myproduct1.html, this same page will be returned to every user. If you add another similar product to your site you will need to add another page (e.g. myproduct2.html) and so on. This can start to get really inefficient — what happens when you get to thousands of product pages? You would repeat a lot of code across each page (the basic page template, structure, etc.), and if you wanted to change anything about the page structure — like add a new "related products" section for example — then you'd have to change every page individually.
+
+The server for a static site will only ever need to process GET requests, because the server doesn't store any modifiable data. It also doesn't change its responses based on HTTP Request data (e.g. URL parameters or cookies).
+
+
+
+DYNAMIC SITE
