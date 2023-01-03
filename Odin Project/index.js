@@ -6,3 +6,14 @@ http
     res.end("hello world");
   })
   .listen(8080);
+
+const options = {
+  hostname: "google.com",
+  port: 8080,
+  path: "/",
+  method: "GET",
+};
+
+http.request(options, (res) => {
+  console.log(`status code: ${res.statusCode} `);
+});

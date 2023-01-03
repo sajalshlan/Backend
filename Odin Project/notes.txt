@@ -33,3 +33,68 @@ The server for a static site will only ever need to process GET requests, becaus
 
 
 DYNAMIC SITE
+
+1. The web browser creates an HTTP GET request to the server using the base URL for the resource (/best) and encoding the team and player number either as URL parameters (e.g. /best?team=my_team_name&show=11) or as part of the URL pattern (e.g. /best/my_team_name/11/). A GET request is used because the request is only fetching data (not modifying data).
+
+2. The Web Server detects that the request is "dynamic" and forwards it to the Web Application for processing (the web server determines how to handle different URLs based on pattern matching rules defined in its configuration).
+
+3. The Web Application identifies that the intention of the request is to get the "best team list" based on the URL (/best/) and finds out the required team name and number of players from the URL. The Web Application then gets the required information from the database (using additional "internal" parameters to define which players are "best", and possibly also getting the identity of the logged in coach from a client-side cookie).
+
+4. The Web Application dynamically creates an HTML page by putting the data (from the Database) into placeholders inside an HTML template.
+
+5. The Web Application returns the generated HTML to the web browser (via the Web Server), along with an HTTP status code of 200 ("success"). If anything prevents the HTML from being returned then the Web Application will return another code — for example "404" to indicate that the team does not exist.
+
+6. The Web Browser will then start to process the returned HTML, sending separate requests to get any other CSS or JavaScript files that it references (see step 7).
+
+7. The Web Server loads static files from the file system and returns them to the browser directly (again, correct file handling is based on configuration rules and URL pattern matching).
+
+
+
+NPM
+npm is the standard package manager for Node.js.
+it manages downloads of dependencies of your project
+
+--save-dev installs and adds the entry to the package.json file devDependencies
+
+Shorthands of the flags can also be used:
+-S: --save
+-D: --save-dev
+-O: --save-optional
+
+The difference between devDependencies and dependencies is that the former contains development tools, like a testing library, while the latter is bundled with the app in production.
+
+good resource to study about package.json file - [https://github.com/nodejs/nodejs.dev/blob/aa4239e87a5adc992fdb709c20aebb5f6da77f86/content/learn/node-js-package-manager/package-json.en.md]
+
+
+
+LOCAL VS GLOBAL NPM PACKAGES
+The main difference between local and global packages is this:
+
+- local packages are installed in the directory where you run npm install <package-name>, and they are put in the node_modules folder under this directory
+- global packages are all put in a single place in your system (exactly where depends on your setup), regardless of where you run npm install -g <package-name>
+
+In general, all packages should be installed locally.
+
+This makes sure you can have dozens of applications in your computer, all running a different version of each package if needed.
+
+Updating a global package would make all your projects use the new release, and as you can imagine this might cause nightmares in terms of maintenance, as some packages might break compatibility with further dependencies, and so on.
+
+All projects have their own local version of a package, even if this might appear like a waste of resources, it's minimal compared to the possible negative consequences.
+
+A package should be installed globally when it provides an executable command that you run from the shell (CLI), and it's reused across projects.
+
+You can also install executable commands locally and run them using npx, but some packages are just better installed globally.
+
+Great examples of popular global packages which you might know are
+
+    npm
+    vue-cli
+    grunt-cli
+    mocha
+    react-native-cli
+    gatsby-cli
+    forever
+    nodemon
+
+You probably have some packages installed globally already on your system. You can see them by running:
+        npm list -g --depth 0
