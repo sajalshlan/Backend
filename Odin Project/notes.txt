@@ -14,7 +14,9 @@ NODE
 it was impossible to write any program that was not a website using a JavaScript. Node brought JS out of the browser-land - allowing it to accomplish what other server-side languages
 So basically node allows you to run JS on a machine or a server without having to go thru web browser.
 
-To facilitate this, Node has some added functionality that is not found in browser-based JavaScript, such as the ability to read and write local files, create http connections and listen to network requests.
+So how Node brings JS out of browser-land is - our chrome browser uses a V8 runtime engine made by google, which compiles JS code to machine level code so that our machines can understand the JS code - so node wraps up this V8 engine inside itself and hence using node we can write JS without writing it in browser and now in our machines and servers.
+
+To facilitate this, Node has some added functionality that is not found in browser-based JavaScript, such as the ability to read and write local files, create http connections, connect and interact to a database and listen to network requests.
 
 Back to the definition from Node’s website: Node is an asynchronous event driven JavaScript runtime.
 
@@ -63,7 +65,14 @@ Shorthands of the flags can also be used:
 
 The difference between devDependencies and dependencies is that the former contains development tools, like a testing library, while the latter is bundled with the app in production.
 
-good resource to study about package.json file - [https://github.com/nodejs/nodejs.dev/blob/aa4239e87a5adc992fdb709c20aebb5f6da77f86/content/learn/node-js-package-manager/package-json.en.md]
+
+
+**good resource to study about package.json file - [https://github.com/nodejs/nodejs.dev/blob/aa4239e87a5adc992fdb709c20aebb5f6da77f86/content/learn/node-js-package-manager/package-json.en.md]
+
+
+
+**  Consider modules to be the same as JavaScript libraries.
+    A set of functions you want to include in your application.
 
 
 
@@ -98,3 +107,31 @@ Great examples of popular global packages which you might know are
 
 You probably have some packages installed globally already on your system. You can see them by running:
         npm list -g --depth 0
+
+
+
+** If we do const xyz = require('xyz')
+it means we are not installing any new dependencies but we are just importing it and the 'xyz' is core module already present that came with nodejs 
+
+
+
+**NODE's edge over PHP or ASP is its nature of asynchronous programming:
+
+A common task for a web server can be to open a file on the server and return the content to the client.
+
+- Here is how PHP or ASP handles a file request:
+
+Sends the task to the computer's file system.
+Waits while the file system opens and reads the file.
+Returns the content to the client.
+Ready to handle the next request.
+
+
+- Here is how Node.js handles a file request:
+
+Sends the task to the computer's file system.
+Ready to handle the next request.
+When the file system has opened and read the file, the server returns the content to the client.
+
+Node.js eliminates the waiting, and simply continues with the next request.
+Node.js runs single-threaded, non-blocking, asynchronous programming, which is very memory efficient.
