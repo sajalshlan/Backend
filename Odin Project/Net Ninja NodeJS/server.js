@@ -1,26 +1,31 @@
 const http = require("http");
 const fs = require("fs");
-const { URL } = require("url");
 
 const server = http.createServer((req, res) => {
-  console.log(req.url);
-  if (req.url === "/summer") {
-    fs.readFile("./summer.html", (err, data) => {
-      if (err) {
-        console.log(err);
-      } else {
-        res.end(data);
-      }
-    });
-  } else if (req.url === "/winter") {
-    fs.readFile("./winter.html", (err, data) => {
-      if (err) {
-        console.log(err);
-      } else {
-        res.end(data);
-      }
-    });
+  let path = "./views/";
+
+  res.setHeader("Content-type", "text/html");
+
+  switch (req.url) {
+    case "/":
+      path = path + "about.html";
+      break;
+    case "/about":
+      path = path + "about.html";
+      break;
+    default:
+      path = path + "404.html";
+      break;
   }
+
+  fs.readFile(path, (err, data) => {
+    if (err) {
+      console.log(err);
+      res.end();
+    } else {
+      res.end(data);
+    }
+  });
 });
 
 server.listen(8080, () => {
