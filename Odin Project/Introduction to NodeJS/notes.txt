@@ -135,3 +135,23 @@ When the file system has opened and read the file, the server returns the conten
 
 Node.js eliminates the waiting, and simply continues with the next request.
 Node.js runs single-threaded, non-blocking, asynchronous programming, which is very memory efficient.
+
+
+- Parse an address with the url.parse() method, and it will return a URL object with each part of the address as properties:
+
+        const { URL } = require('url');
+        const url = "https://u:p@www.example.com:777/a/b?c=d&e=f#g";
+        const parsedUrl = new URL(url);
+        ...
+        href         https://u:p@www.example.com:777/a/b?c=d&e=f#g
+        origin       https://www.example.com:777
+        protocol     https:
+        username     u
+        password     p
+        host         www.example.com:777
+        hostname     www.example.com
+        port         777
+        pathname     /a/b
+        search       ?c=d&e=f
+        searchParams { 'c' => 'd', 'e' => 'f' }
+        hash         #g

@@ -1,0 +1,40 @@
+
+GLOBAL OBJECT
+
+like the window object in browser, the one which have all the methods like setTimeout and it is present there so instead of doing this - window.setTimeout(), we can do this too - setTimeout()
+
+Similarly node has a global object called global, same.
+
+
+
+MODULES
+    const xyz = require('stable')
+
+    here the const xyz is the object we receive when this is done in stable.js:
+
+    module.exports = {people, age}
+
+
+    Or else do destructuring.
+
+
+
+FILE SYSTEM
+normie yrr, check video #2
+
+
+
+IP ADDRESSES
+all machines connected to the internet have a unique IP ADDRESSES
+difficult to remember, so domain names mask these IP addresses
+
+
+
+IF we are writin multiple things we need to use res.write(data) again and again and then at last tell the server that we're ending our response with res.end() [otherwise it keeps loading and is hanging for us to tell that yes the response has ended
+]
+but if we are sending only one thing, then we can just pass that as a parameter to our res.end() ---- res.end(data)
+
+
+
+BASIC ROUTING
+figure out the URL the user requests and send back a different html files according to that
