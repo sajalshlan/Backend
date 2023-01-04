@@ -30,8 +30,8 @@ difficult to remember, so domain names mask these IP addresses
 
 
 
-IF we are writin multiple things we need to use res.write(data) again and again and then at last tell the server that we're ending our response with res.end() [otherwise it keeps loading and is hanging for us to tell that yes the response has ended
-]
+IF we are writing multiple things we need to use res.write(data) again and again and then at last tell the server that we're ending our response with res.end() [otherwise it keeps loading and is hanging for us to tell that yes the response has ended]
+
 but if we are sending only one thing, then we can just pass that as a parameter to our res.end() ---- res.end(data)
 
 
@@ -70,5 +70,15 @@ we did routing here with the use of pathname and switch cases:
         server.listen(8080, () => {
         console.log("server running at port 8080");
         });
+
+
+
+STATUS CODES
+    100 range - informational responses
+    200 range- success codes
+    300 range - codes for redirects
+    400 range - user/client error codes
+    500 range - server error codes  
+
 
 
