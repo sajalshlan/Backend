@@ -2,15 +2,6 @@ const http = require("http");
 const { URL } = require("url");
 const fs = require("fs");
 
-const server = http.createServer((req, res) => {
-  console.log("request is made");
-  console.log(req.url);
-});
-
-server.listen(8080, () => {
-  console.log("listening to your bs");
-});
-
 // http
 //   .createServer((req, res) => {
 //     res.writeHead(200, { "Content-type": "text/html" });
@@ -39,8 +30,7 @@ server.listen(8080, () => {
 // http
 //   .createServer((req, res) => {
 //     console.log(req.url);
-//     const q = new URL(req.url);
-//     const filename = "." + q.pathname;
+//     const filename = "." + req.url + ".html";
 
 //     fs.readFile(filename, (err, data) => {
 //       if (err) {
@@ -53,4 +43,34 @@ server.listen(8080, () => {
 //       return res.end();
 //     });
 //   })
-//   .listen(8080);
+//   .listen(3000);
+
+const server = http.createServer((req, res) => {
+  let path = "./views/";
+  switch (req.url) {
+    case "/":
+      path += "index.html";
+      break;
+    case "/about":
+      path += "about.html";
+      break;
+    case "/contact-me":
+      path += "contact-me";
+      break;
+    default:
+      path += "404.html";
+      break;
+  }
+
+  fs.readFile(path, (err, data) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.write(data);
+    }
+  });
+});
+
+server.listen(3000, () => {
+  console.log("server up and running at 3000");
+});
