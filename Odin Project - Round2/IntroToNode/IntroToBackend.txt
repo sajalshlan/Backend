@@ -1,0 +1,4 @@
+CLIENTS
+Clients are anything - the user or the browser that sends a request to the backend. They request for the HTML, CSS, JS or images with which they build the frontend of the website.
+
+BACKEND
