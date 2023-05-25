@@ -1,0 +1,17 @@
+Frameworks 
+Prevents repetition - by batching same recycled code that is used again and again
+Provides organization - keeps our files and folder structure modular and clean, follows good practice such as MVC separation principles
+
+-----------------
+
+MVC
+The Model-View-Controller (MVC) is a software architectural pattern that separates an application into three interconnected components: the Model, the View, and the Controller. The MVC pattern is widely used in the development of web and desktop applications, providing a clear separation of concerns and promoting modularity and code organization. The separation principles of MVC can be summarized as follows:
+
+Model:
+The Model represents the data and business logic of the application. It encapsulates the data, defines its structure, and includes the methods and operations to manipulate and access the data. The Model is independent of the user interface and communicates with the View and Controller through defined interfaces or events. It should be responsible for maintaining the integrity and consistency of the data.
+
+View:
+The View is responsible for rendering the user interface and presenting the data to the user. It represents the visual elements, layout, and presentation logic. The View receives data from the Model and displays it to the user, but it does not perform any data manipulation or business logic. It can also listen for user input or events and notify the Controller about the user's actions.
+
+Controller:
+The Controller acts as an intermediary between the Model and the View. It receives user input from the View, interprets it, and triggers appropriate actions on the Model or the View. The Controller is responsible for handling user interactions, updating the Model, and updating the View accordingly. It encapsulates the application's logic and orchestrates the flow of data and events between the Model and the View.
